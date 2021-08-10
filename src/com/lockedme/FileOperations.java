@@ -3,27 +3,26 @@ package com.lockedme;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class FileOperations {
 
-	public static List<String> getAllFiles(String folderPath) {
-		// Creating the file Object
-		File file = new File(folderPath);
+	public static boolean writeContentToFile(String folderPath, String fileName, List<String> content) {
 
-		// getting all the files into FileArray
-		File[] listOfFiles = file.listFiles();
+		File f = new File(folderPath, fileName);
+		try {
+			FileWriter fw = new FileWriter(f);
 
-		// Declare a ArrayList to store the file names
-		List<String> fileNames = new ArrayList<String>();
-		// We are looping the listOfFiles and we will return the filenames
-		for (File f : listOfFiles)
-			fileNames.add(f.getName());
+			for (String s : content) {
+				fw.write(s + "\n");
+			}
+			fw.flush();
+			fw.close();
+			return true;
+		} catch (IOException e) {
+			e.printStackTrace();
+			return false;
 
-		// return the List
-		return fileNames;
-
+		}
 	}
-
 }

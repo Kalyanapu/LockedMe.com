@@ -1,28 +1,20 @@
 package com.lockedme;
 
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.List;
 
 public class FileOperations {
 
-	public static boolean writeContentToFile(String folderPath, String fileName, List<String> content) {
+	public static boolean deleteFile(String folderPath, String fileName) {
 
-		File f = new File(folderPath, fileName);
+		File file = new File(folderPath + "\\" + fileName);
 		try {
-			FileWriter fw = new FileWriter(f);
+			if (file.delete())
+				return true;
+			else
+				return false;
 
-			for (String s : content) {
-				fw.write(s + "\n");
-			}
-			fw.flush();
-			fw.close();
-			return true;
-		} catch (IOException e) {
-			e.printStackTrace();
+		} catch (Exception e) {
 			return false;
-
 		}
 	}
 }

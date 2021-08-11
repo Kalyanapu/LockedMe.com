@@ -24,11 +24,12 @@ public class LockedMe {
 	}
 
 	// Displaying the printWelcomeScreen
-	private static final String printWelcomeScreen = "\n*****************  LockedMe.com *******************"
-			+ "\n***************** Naveen kumar.k *******************\n";
+	protected static final String printWelcomeScreen = "\n***************** Welcome to LockedMe.com *******************"
+			+ "\n*****************This application is developed Naveen kumar.k *******************\n";
 	// Displaying the menuOptions so that user can choose one of the following
-	private static final String menuOptions = "\nMAIN MENU - Select any of the following: \n"
-			+ "1 -> List files in directory\n" + "2 -> Add, Delete or Search\n" + "3 -> Exit Program";
+	protected static final String menuOptions = "\nMAIN MENU - Select any of the following: \n"
+			+ "1 -> List files in directory\n" + "2 -> Add, Delete or Search\n" + "3 -> Exit Program\n"
+			+ "4 -> ShowPrimaryMenu";
 	// Displaying the BusinessLevel operations so that user can choose one of the
 	// following
 	private static final String HandleOptions = "   \nSelect any of the following: \n" + "   a -> Add a file\n"
@@ -38,7 +39,7 @@ public class LockedMe {
 	 * We are Displaying the menuOptions so that user can able to know what are the
 	 * functionalities are there in this application
 	 */
-	void showPrimaryMenu() {
+	public void showPrimaryMenu() {
 		System.out.println(menuOptions);
 		try {
 			Scanner scanner = new Scanner(System.in);
@@ -52,21 +53,21 @@ public class LockedMe {
 				showSecondaryMenu();
 			}
 			case 3: {
-				System.out.println("Thank You");
+				System.out.println("Thank You for using LockedMe.com");
 				System.exit(0);
-			}
+			}	
 			default:
 				showPrimaryMenu();
 			}
 		} catch (Exception e) {
-			System.out.println("Please enter 1, 2 or 3");
+			System.out.println("User Please enter 1, 2 or 3");
 			showPrimaryMenu();
 		}
 	}
 
 	/**
 	 * The Business level operations we are performing in the switchCase so that
-	 * user can do whatever operation he want
+	 * user can choose whatever operation he want
 	 */
 	void showSecondaryMenu() {
 		System.out.println(HandleOptions);
@@ -83,7 +84,7 @@ public class LockedMe {
 				break;
 			}
 			case 'b': {
-				System.out.print("↳ Deleting a file...Please Enter a File Name : ");
+				System.out.print("Please Enter a File Name you want to delete : ");
 				String filename = scanner.next().trim();
 				deleteFile(filename);
 				break;
@@ -187,4 +188,5 @@ public class LockedMe {
 		LockedMe menu = new LockedMe();
 		menu.showPrimaryMenu();
 	}
+
 }
